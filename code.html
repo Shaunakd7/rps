@@ -4,15 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <div id = "container">
+    <button id = "ROCK" onclick="playround('ROCK')"> 🪨 </button>
+    <button id = "PAPER" onclick="playround('PAPER')"> 📄 </button>
+    <button id = "SCISSOR" onclick="playround('SCISSOR')"> ✂️ </button>
+
+    <p>humar score: <span id = "hm">0</span></p>
+    <p>computer score: <span id = "cp">0</span></p>
+    </div>
+ 
+
     <script>
         //Write a function called capitalize that takes a string and returns that string with only the first letter capitalized. 
         // Make sure that it can take strings that are lowercase, UPPERCASE or BoTh.
-        let human_choice = prompt('enter your choice').toUpperCase()
-        let comp_choice = Math.random()
+        //let human_choice = prompt('enter your choice').toUpperCase()
+
+        //let comp_choice = Math.random()
         // 0-0.33 = rock, 0.33-0.66 = scissor, 0.66-0.99 = paper
         let human_score = 0
         let comp_score = 0
-        function playround(human_choice, comp_choice){
+        function playround(human_choice){
+            let comp_choice = Math.random()
             let string_val;
             if (comp_choice >= 0 && comp_choice <= 0.33) {
                 string_val = 'ROCK'
@@ -28,6 +40,9 @@
             if (string_val == 'ROCK' && human_choice == 'SCISSOR')
             {
                 comp_score += 1
+                document.getElementById("cp").textContent = comp_score
+                document.getElementById("hm").textContent = human_score
+                
                 console.log('you lost')
                 console.log("you chose"+human_choice+"computer chose" + comp_choice)
             }
@@ -35,6 +50,8 @@
             else if (string_val == 'SCISSOR' && human_choice == 'ROCK')
             {
                 human_score += 1
+                document.getElementById("cp").textContent = comp_score
+                document.getElementById("hm").textContent = human_score
                 console.log('you won')
                 console.log("you chose"+human_choice+"computer chose" + comp_choice)
             }
@@ -42,6 +59,8 @@
             else if (string_val == 'PAPER' && human_choice == 'ROCK')
             {
                 comp_score += 1
+                document.getElementById("cp").textContent = comp_score
+                document.getElementById("hm").textContent = human_score
                 console.log('you lost')
                 console.log("you chose"+human_choice+"computer chose" + comp_choice)
             }
@@ -49,6 +68,8 @@
             else if (string_val == 'PAPER' && human_choice == 'SCISSOR')
             {
                 human_score += 1
+                document.getElementById("cp").textContent = comp_score
+                document.getElementById("hm").textContent = human_score
                 console.log('you won')
                 console.log("you chose"+human_choice+"computer chose" + comp_choice)
             }
@@ -56,6 +77,8 @@
             else if (string_val == 'SCISSOR' && human_choice == 'PAPER')
             {
                 comp_score += 1
+                document.getElementById("cp").textContent = comp_score
+                document.getElementById("hm").textContent = human_score
                 console.log('you lost')
                 console.log("you chose"+human_choice+"computer chose" + comp_choice)
             }
@@ -63,12 +86,16 @@
             else if (string_val == 'ROCK' && human_choice == 'PAPER')
             {
                 human_score += 1
+                document.getElementById("cp").textContent = comp_score
+                document.getElementById("hm").textContent = human_score
                 console.log('you won')
                 console.log("you chose"+human_choice+"computer chose" + comp_choice)
             }
 
             else{
                 console.log('draw, please go again!')
+                document.getElementById("cp").textContent = comp_score
+                document.getElementById("hm").textContent = human_score
                 console.log("you chose " + human_choice + " computer chose " + string_val)
             }
             
@@ -78,7 +105,7 @@
 
         }
 
-        playround(human_choice, comp_choice)
+        //playround(human_choice, comp_choice)
 
     </script>
 </head>
